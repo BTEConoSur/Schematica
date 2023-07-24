@@ -4,7 +4,7 @@ import com.bteconosur.common.status.SchematicRequestStatus;
 
 import java.io.File;
 
-public class SchematicRequest {
+public class SchematicRequest implements Identifiable {
 
     private final String idRequest;
     private final String userId;
@@ -19,10 +19,6 @@ public class SchematicRequest {
         this.userName = userName;
         this.schematicFile = schematicFile;
         schematicRequestStatus = null;
-    }
-
-    public String getIdRequest() {
-        return idRequest;
     }
 
     public String getUserId() {
@@ -45,4 +41,8 @@ public class SchematicRequest {
         return schematicRequestStatus != null;
     }
 
+    @Override
+    public String getId() {
+        return idRequest;
+    }
 }

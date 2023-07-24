@@ -1,13 +1,16 @@
 package com.bteconosur.common;
 
+import com.bteconosur.common.observer.GenericPublisherObserver;
 import com.bteconosur.common.status.SchematicRequestStatus;
 
 public class DefaultSchematicService implements SchematicService {
 
     private final SchematicRequestService schematicRequestService;
+    private final GenericPublisherObserver<SchematicRequest> publisherObserver;
 
     public DefaultSchematicService(SchematicRequestService schematicRequestService) {
         this.schematicRequestService = schematicRequestService;
+        publisherObserver = new GenericPublisherObserver<>();
     }
 
     @Override
@@ -18,6 +21,11 @@ public class DefaultSchematicService implements SchematicService {
     @Override
     public void reject(String id, String message, String author) {
         updateStatus(id, message, author, SchematicRequestStatus.SchematicRequestStatusType.REJECTED);
+    }
+
+    @Override
+    public GenericPublisherObserver<SchematicRequest> getObserverPublisher() {
+        return publisherObserver;
     }
 
     private void updateStatus(String id, String  message, String  author,
@@ -35,6 +43,8 @@ public class DefaultSchematicService implements SchematicService {
                         .author(author)
                         .build()
         );
+
+        publisherObserver.notifyAll(request);
 
     }
 
