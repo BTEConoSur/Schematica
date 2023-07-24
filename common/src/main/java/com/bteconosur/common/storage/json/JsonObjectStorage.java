@@ -10,6 +10,7 @@ public class JsonObjectStorage<T extends Identifiable> implements ObjectStorage<
     @Override
     public void save(T object) {
 
+
     }
 
     @Override
