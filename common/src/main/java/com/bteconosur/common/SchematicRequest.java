@@ -1,5 +1,7 @@
 package com.bteconosur.common;
 
+import com.bteconosur.common.status.SchematicRequestStatus;
+
 import java.io.File;
 
 public class SchematicRequest {
@@ -8,6 +10,7 @@ public class SchematicRequest {
     private final String userId;
     private final String userName;
     private final File schematicFile;
+    private SchematicRequestStatus schematicRequestStatus;
 
     public SchematicRequest(String idRequest, String userId, String userName,
                             File schematicFile) {
@@ -15,6 +18,7 @@ public class SchematicRequest {
         this.userId = userId;
         this.userName = userName;
         this.schematicFile = schematicFile;
+        schematicRequestStatus = null;
     }
 
     public String getIdRequest() {
@@ -31,6 +35,14 @@ public class SchematicRequest {
 
     public File getSchematicFile() {
         return schematicFile;
+    }
+
+    public void updateStatus(SchematicRequestStatus schematicRequestStatus) {
+        this.schematicRequestStatus = schematicRequestStatus;
+    }
+
+    public boolean isViewForStaff() {
+        return schematicRequestStatus != null;
     }
 
 }
