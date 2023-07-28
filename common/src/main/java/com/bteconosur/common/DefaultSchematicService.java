@@ -28,7 +28,7 @@ public class DefaultSchematicService implements SchematicService {
         return publisherObserver;
     }
 
-    private void updateStatus(String id, String  message, String  author,
+    private void updateStatus(String id, String message, String author,
                               SchematicRequestStatus.SchematicRequestStatusType type) {
         SchematicRequest request = schematicRequestService.get(id);
 
@@ -44,7 +44,11 @@ public class DefaultSchematicService implements SchematicService {
                         .build()
         );
 
-        publisherObserver.notifyAll(request);
+        boolean response = publisherObserver.notifyAll(request);
+
+        if (!response) {
+
+        }
 
     }
 
