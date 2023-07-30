@@ -1,6 +1,8 @@
 package com.bteconosur.common;
 
+import com.bteconosur.common.observer.GenericPublisherObserver;
 import com.bteconosur.common.util.IdentifierCreatorUtil;
+import sun.net.www.content.text.Generic;
 
 import java.io.File;
 import java.util.HashMap;
@@ -11,6 +13,8 @@ public class DefaultSchematicRequestService implements SchematicRequestService {
     private static final int ID_SIZE = 6;
 
     private final Map<String, SchematicRequest> requests;
+    private final GenericPublisherObserver<SchematicRequest> schematicRequestGenericPublisherObserver =
+            new GenericPublisherObserver<>();
 
     public DefaultSchematicRequestService() {
         requests = new HashMap<>();

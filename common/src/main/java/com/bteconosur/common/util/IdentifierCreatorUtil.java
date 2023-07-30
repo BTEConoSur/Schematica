@@ -37,4 +37,9 @@ public class IdentifierCreatorUtil {
         );
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        throw new AssertionError();
+    }
+
 }
