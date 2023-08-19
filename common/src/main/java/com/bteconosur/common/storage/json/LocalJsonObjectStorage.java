@@ -8,18 +8,18 @@ import com.google.gson.InstanceCreator;
 
 import java.util.Collection;
 
-public class JsonObjectStorage<T extends Identifiable> implements ObjectStorage<T> {
+public class LocalJsonObjectStorage<T extends Identifiable> implements ObjectStorage<T> {
 
     private final Gson gson;
 
-    public JsonObjectStorage(Class<T> clazz, InstanceCreator<T> instanceCreator) {
+    public LocalJsonObjectStorage(Class<T> clazz, InstanceCreator<T> instanceCreator) {
         GsonBuilder gsonBuilder = new GsonBuilder();
 
         gsonBuilder.registerTypeAdapter(clazz, instanceCreator);
         gson = gsonBuilder.create();
     }
 
-    public JsonObjectStorage() {
+    public LocalJsonObjectStorage() {
         gson = new Gson();
     }
 
@@ -41,13 +41,13 @@ public class JsonObjectStorage<T extends Identifiable> implements ObjectStorage<
         return null;
     }
 
-    public static <T extends Identifiable> JsonObjectStorage<T> normalImplementation() {
-        return new JsonObjectStorage<>();
+    public static <T extends Identifiable> LocalJsonObjectStorage<T> normalImplementation() {
+        return new LocalJsonObjectStorage<>();
     }
 
-    public static <T extends Identifiable> JsonObjectStorage<T> withAdapterSpecial(Class<T> clazz,
-                                                                                   InstanceCreator<T> instanceCreator) {
-        return new JsonObjectStorage<>(clazz, instanceCreator);
+    public static <T extends Identifiable> LocalJsonObjectStorage<T> withAdapterSpecial(Class<T> clazz,
+                                                                                        InstanceCreator<T> instanceCreator) {
+        return new LocalJsonObjectStorage<>(clazz, instanceCreator);
     }
 
 }

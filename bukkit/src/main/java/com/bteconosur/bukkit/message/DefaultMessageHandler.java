@@ -27,6 +27,13 @@ public class DefaultMessageHandler<S> implements MessageHandler<S> {
     public void send(S sender, String path) {
         String message = getMessage(path);
 
+
+
+        String newMessageBadWay = new String("Hello :D");
+
+        String newMessageBestWay = "Hello X2 :D";
+
+
         entityMessageSender.send(sender, message);
     }
 
