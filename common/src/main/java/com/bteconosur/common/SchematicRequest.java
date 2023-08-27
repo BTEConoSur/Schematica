@@ -42,7 +42,7 @@ public class SchematicRequest implements Identifiable {
     }
 
     @Override
-    public String getId() {
+    public String id() {
         return idRequest;
     }
 }
