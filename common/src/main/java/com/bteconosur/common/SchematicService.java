@@ -1,6 +1,9 @@
 package com.bteconosur.common;
 
+import com.bteconosur.common.model.SchematicRegistry;
 import com.bteconosur.common.observer.GenericPublisherObserver;
+
+import java.util.Set;
 
 public interface SchematicService {
 
@@ -9,5 +12,7 @@ public interface SchematicService {
     void reject(String id, String message, String author);
 
     GenericPublisherObserver<SchematicRequest> getObserverPublisher();
+
+    Set<SchematicRegistry> getSchematicsRegistered();
 
 }

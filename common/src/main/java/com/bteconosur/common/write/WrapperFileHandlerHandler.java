@@ -10,7 +10,7 @@ import java.util.concurrent.Future;
 public class WrapperFileHandlerHandler {
 
     private final File file;
-    private WrapperFileHandlerReader reader;
+    private final WrapperFileHandlerReader reader;
 
     public WrapperFileHandlerHandler(File file) throws FileNotFoundException {
         this.file = file;

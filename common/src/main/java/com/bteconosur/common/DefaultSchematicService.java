@@ -1,7 +1,10 @@
 package com.bteconosur.common;
 
+import com.bteconosur.common.model.SchematicRegistry;
 import com.bteconosur.common.observer.GenericPublisherObserver;
 import com.bteconosur.common.status.SchematicRequestStatus;
+
+import java.util.Set;
 
 public class DefaultSchematicService implements SchematicService {
 
@@ -26,6 +29,11 @@ public class DefaultSchematicService implements SchematicService {
     @Override
     public GenericPublisherObserver<SchematicRequest> getObserverPublisher() {
         return publisherObserver;
+    }
+
+    @Override
+    public Set<SchematicRegistry> getSchematicsRegistered() {
+        return null;
     }
 
     private void updateStatus(String id, String message, String author,
